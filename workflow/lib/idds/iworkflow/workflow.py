@@ -1158,7 +1158,7 @@ def workflow(func=None, *, local=False, service='idds', source_dir=None, primary
         return functools.partial(workflow, local=local, service=service, source_dir=source_dir, primary=primary, queue=queue, site=site, cloud=cloud,
                                  max_walltime=max_walltime, distributed=distributed, init_env=init_env)
 
-    if 'IDDS_IWORKFLOW_LOAD_WORKFLOW' in os.environ:
+    if 'IDDS_IWORKFLOW_LOAD_WORKFLOW' in os.environ and os.environ['IDDS_IWORKFLOW_LOAD_WORKFLOW']:
         return func
 
     @functools.wraps(func)
