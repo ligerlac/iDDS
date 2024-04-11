@@ -921,7 +921,7 @@ def work(func=None, *, map_results=False, lazy=False, init_env=None):
     if func is None:
         return functools.partial(work, map_results=map_results, lazy=lazy, init_env=init_env)
 
-    if 'IDDS_IWORKFLOW_LOAD_WORK' in os.environ and os.environ['IDDS_IWORKFLOW_LOAD_WORK']:
+    if os.environ.get('IDDS_IGNORE_WORK_DECORATOR', False):
         return func
 
     @functools.wraps(func)
